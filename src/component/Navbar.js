@@ -35,7 +35,7 @@ export default function Navbar ({ token, setToken}){
     //  </ul>
 <ul className="ul1">
     
-            <li className="w3-button w3-inline w3-light white" id="ccvv"><Link id="ccvv" className="homelink" to="/">Home </Link></li>
+            <li className="w3-button w3-inline w3-light white" id="ccvv"><Link id="ccvv" className="homelink" to="/Home">Home </Link></li>
             <li className="w3-button w3-inline w3-light white" id="NavbarTitle"><Link  to="/vegetarianFood">vegetarianFood</Link></li>
             <li className="w3-button w3-inline w3-light white" id="NavbarTitle"><Link  to="/meatMeals">meatMeals</Link></li>
             <li className="w3-button w3-inline w3-light white" id="NavbarTitle"><Link  to="/FoodDiabetics">FoodDiabetics</Link></li>
