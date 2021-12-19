@@ -8,7 +8,7 @@ const [ password, setPassword] = useState("")
 const history = useHistory();
 
 const addUs = async ()=>{
-    const result = await axios.post("http://localhost:5000/signUp", {
+    const result = await axios.post(" ", {
         name, email, password
     });
     if ( result.status === 201){

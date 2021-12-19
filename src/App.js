@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Home from './component/Home';
 import Login from "./component/Login";
 import SignUp from './component/SignUp';
+import Diet from "./component/Diet"
 import Navbar from "./component/Navbar";
 import { Route } from "react-router-dom"
 import "./App.css"
@@ -9,7 +10,7 @@ import "./App.css"
 
 export default function App(){
   const [ token, setToken ] = useState("");
-  
+   
 
   return (
     <div>
@@ -22,6 +23,11 @@ export default function App(){
         
       }}/>
       <Route exact path="/SignUp" component={SignUp} />
+      <Route exact path="/Diet" render ={()=>{
+        return <Diet setToken={setToken} token={token} />
+        
+      }}/>
+      {/* <Route exact path="/Diet" component={Diet} /> */}
     </div>
   )
 }

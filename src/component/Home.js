@@ -16,39 +16,58 @@ export default function Home({token}) {
         // ^ باليوس افكت نستقبل البيانات من الباك اند
     },[] )
   
-    // const changeName =()=>{
-    //     // 
-    // }
+    const changeName =(e)=>{
+     setName(e.target.value)
+    }
 
-    // const changeDisc = ()=>{
+    const changeDisc = (e)=>{
+     setDescription(e.target.value)
+    }
 
-    // }
+    const changeImg = (e)=>{
+        setImg(e.target.value)
+    }
 
-    // const changeImg = ()=>{
+    const addFood =async ()=>{
+       const respons = await axios.post("http://localhost:5000/Food",
+       {name, description,img },
+       {headers: { authorization: "Bearer "+ token}}
+       )
+       const copyArr = [...food]
+       copyArr.push(respons.data);
+       setFood (copyArr);
+       
+    }
 
-    // }
+    const deletFood = async(id,index)=>{
+        const deletFood = await axios.delete(`http://localhost:5000/Food/${id}`,{
+            headers:{authorization:"Bearer " + token},
+        })
+            const copyArr = [...food];
+            copyArr.splice(index,1);
+            setFood(copyArr);
+            console.log(copyArr);
+        
+    }
 
-    // const addFood = ()=>}{
-
-    // }
 
     return (
-
-       
         <div>
-            {food.map((element, i)=>{
+            <input onChange={(e)=>{changeName(e)}} placeholder='name'/>
+            <input onChange={(e)=>{changeDisc(e)}} placeholder='discription' />
+            <input onChange={(e)=>{changeImg(e)}} placeholder='img' />
+            <button onClick={()=>{addFood()}}> add food </button>
+            {food.map((element, index)=>{
                 return(
                     <div className='Box'>
                 <h1 > {element.name}</h1>
                 <h2>{element.description}</h2>
                 <img style={{width: "300px" , height: "300px" , "border-radius": "8px",}} src={element.img}/>
-                
+                <button onClick={()=>{deletFood(element._id,index)}}>remove</button>
                 {/* ^ عن طريق الماب قمنا بعرض الصور والبيانات بالصفحة */}
-            {/* <input onChange={(e)=>{changeName(e)}} />
-            <input onChange={(e)=>{changeDisc(e)}} />
-            <input onChange={(e)=>{changeImg(e)}} />
-            <button onClick={()=>{addFood()}}/> */}
+            
                 </div>
+                
                 )
             })} 
         </div>
