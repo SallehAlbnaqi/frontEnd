@@ -4,7 +4,7 @@ export default function vegetarianFood() {
     
     return (
         <div>
-           
+          
         </div>
     )
 }

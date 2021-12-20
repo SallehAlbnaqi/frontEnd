@@ -3,10 +3,12 @@ import axios from 'axios'
 // import { AiFillLike } from 'react-icons'
 
 export default function Home({token}) {
-    const [ food, setFood] = useState([])
-    const [ name , setName ] = useState("")
-    const [ description, setDescription ] = useState("")
-    const [ img, setImg ] = useState("")
+    // مررنا التوكن ك بروبز عشان نستخدمة
+    const [ food, setFood] = useState([]);
+    const [ name , setName ] = useState("");
+    const [ description, setDescription ] = useState("");
+    const [ img, setImg ] = useState("");
+    // const [searchAr, setsearchAr] = useState("");
     useEffect( async() => {
         const result = await axios.get("http://localhost:5000/Food",{
          headers:{ authorization : "Bearer " + token},
@@ -50,6 +52,19 @@ export default function Home({token}) {
         
     }
 
+    // const searchTarg = (e)=>{
+    //     setsearchAr(e.target.value)
+    // }
+    // const searArr = ()=> {
+    //     const response = food.filter((element) => {
+    //         if (element.name.toLowerCase().includes(searchAr.toLocaleLowerCase())){
+    //             return element;
+    //         }
+    //     });
+    //     setsearchAr(response);
+
+    // }
+
 
     return (
         <div>
@@ -57,6 +72,8 @@ export default function Home({token}) {
             <input onChange={(e)=>{changeDisc(e)}} placeholder='discription' />
             <input onChange={(e)=>{changeImg(e)}} placeholder='img' />
             <button onClick={()=>{addFood()}}> add food </button>
+            {/* <button onClick={()=>{searArr()}}>search</button>
+            <input onChange={(e)=>{searchTarg(e)}}placeholder='input'/> */}
             {food.map((element, index)=>{
                 return(
                     <div className='Box'>

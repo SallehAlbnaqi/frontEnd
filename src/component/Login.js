@@ -4,6 +4,8 @@ import { useHistory } from "react-router";
 
 
 export default function Login ({ setToken }){
+    // جبنا السيت من الاب
+    // ^ فانكشن نمرره عشان نعدل على التوكن
 const [ email, setEmail] = useState("");
 const [ password, setPassword ] = useState("");
 const history = useHistory();

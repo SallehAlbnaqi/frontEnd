@@ -7,6 +7,7 @@ export default function Navbar ({ token, setToken}){
     return (
     <div>
       {(token) ? (
+        // اذا التوكن سجل دخولة يظهر له الناف بار
     //  <ul className="liToken">
     //    <li>
     //      <Link className="link" to="/" onClick={()=>{setToken("")}}>log out</Link>
@@ -20,6 +21,7 @@ export default function Navbar ({ token, setToken}){
     //      <Link className="link" to="/Home" > Home</Link>
     //     </li>
 
+    
         
     //     <li>
     //       <Link className="link" to="/vegetarianFood">vegetarianFood</Link>
@@ -47,9 +49,12 @@ export default function Navbar ({ token, setToken}){
       ) : (
       <div>
    <ul>
+
+     
     
      <li className="w3-button w3-right w3-black" id="NavbarTitle" > <Link  to="/login">login</Link></li>
      <li className="w3-button w3-right w3-black" id="NavbarTitle" > <Link  to="/signUp">signUp</Link></li>
+     {/*1اذا مافيه توكين اظهر له اللوقن والساين اب*/}
             </ul>
 
     

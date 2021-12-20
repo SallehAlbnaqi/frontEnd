@@ -17,17 +17,13 @@ export default function Diet({token}) {
     return (
         
         <div>
-           
-                ` {/* <h1 > {Diet.name}</h1>
-                    <h2>{Diet.description}</h2>
-                    <img style={{width: "300px" , height: "300px" , "border-radius": "8px",}} src={Diet.img}/>` */}
-            {Diet.map((element,index)=>{
-                return(
-                    <div >
+         {Diet.map((element,index)=>{
+          return(
+         <div >
                 <h1 > {element.name}</h1>
                 <h2>{element.description}</h2>
                 <img style={{width: "300px" , height: "300px" , "border-radius": "8px",}} src={element.img}/>
-                    </div>
+         </div>
                 )
             })}
         </div>
