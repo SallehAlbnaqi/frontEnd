@@ -8,7 +8,7 @@ export default function Home({token}) {
     const [ name , setName ] = useState("");
     const [ description, setDescription ] = useState("");
     const [ img, setImg ] = useState("");
-    // const [searchAr, setsearchAr] = useState("");
+    const [searchAr, setsearchAr] = useState("");
     useEffect( async() => {
         const result = await axios.get("http://localhost:5000/Food",{
          headers:{ authorization : "Bearer " + token},
@@ -48,7 +48,6 @@ export default function Home({token}) {
             const copyArr = [...food];
             copyArr.splice(index,1);
             setFood(copyArr);
-            console.log(copyArr);
         
     }
 
@@ -57,11 +56,16 @@ export default function Home({token}) {
     // }
     // const searArr = ()=> {
     //     const response = food.filter((element) => {
-    //         if (element.name.toLowerCase().includes(searchAr.toLocaleLowerCase())){
-    //             return element;
-    //         }
+    //         // if (element.name.toLowerCase().includes(searchAr.toLocaleLowerCase())){
+    //         //     return element;
+    //         // }
+
+    //         // console.log(searchAr);
+    //         return element.name.toLowerCase().includes("a")
     //     });
-    //     setsearchAr(response);
+    //    setsearchAr(response);
+
+    //    console.log(response);
 
     // }
 
@@ -73,7 +77,7 @@ export default function Home({token}) {
             <input onChange={(e)=>{changeImg(e)}} placeholder='img' />
             <button onClick={()=>{addFood()}}> add food </button>
             {/* <button onClick={()=>{searArr()}}>search</button>
-            <input onChange={(e)=>{searchTarg(e)}}placeholder='input'/> */}
+            <input onChange={(e)=>{setsearchAr(e.target.value)}}placeholder='input'/> */}
             {food.map((element, index)=>{
                 return(
                     <div className='Box'>
