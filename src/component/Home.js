@@ -32,8 +32,10 @@ export default function Home({token}) {
 
     const addFood =async ()=>{
        const respons = await axios.post("http://localhost:5000/Food",
-       {name, description,img },
+       {newName:name, newDescription:description, newImg:img },
        {headers: { authorization: "Bearer "+ token}}
+      // ^ استخدمنا الهيدر والاثنتوكيشن عشان نعرف المستخدم اللي ضاف او حذف وهكذا
+
        )
        const copyArr = [...food]
        copyArr.push(respons.data);
@@ -72,20 +74,25 @@ export default function Home({token}) {
 
     return (
         <div>
-            <input onChange={(e)=>{changeName(e)}} placeholder='name'/>
-            <input onChange={(e)=>{changeDisc(e)}} placeholder='discription' />
-            <input onChange={(e)=>{changeImg(e)}} placeholder='img' />
-            <button onClick={()=>{addFood()}}> add food </button>
-            {/* <button onClick={()=>{searArr()}}>search</button>
+            
+     <input onChange={(e)=>{changeName(e)}} placeholder='name'/>
+     <input onChange={(e)=>{changeDisc(e)}} placeholder='discription' />
+     <input onChange={(e)=>{changeImg(e)}} placeholder='img' />
+     <button onClick={()=>{addFood()}}> add food </button>
+      {/* <button onClick={()=>{searArr()}}>search</button>
             <input onChange={(e)=>{setsearchAr(e.target.value)}}placeholder='input'/> */}
-            {food.map((element, index)=>{
+       {food.map((element, index)=>{
+                
                 return(
-                    <div className='Box'>
+                    
+               <div className='Box'>
                 <h1 > {element.name}</h1>
                 <h2>{element.description}</h2>
                 <img style={{width: "300px" , height: "300px" , "border-radius": "8px",}} src={element.img}/>
                 <button onClick={()=>{deletFood(element._id,index)}}>remove</button>
                 {/* ^ عن طريق الماب قمنا بعرض الصور والبيانات بالصفحة */}
+
+                
             
                 </div>
                 
@@ -94,4 +101,6 @@ export default function Home({token}) {
         </div>
     )
 }
+
+
 
