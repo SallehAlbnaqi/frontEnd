@@ -4,101 +4,103 @@ import axios from 'axios'
 
 export default function Home({token}) {
     // مررنا التوكن ك بروبز عشان نستخدمة
-    const [ food, setFood] = useState([]);
-    const [ name , setName ] = useState("");
-    const [ description, setDescription ] = useState("");
-    const [ img, setImg ] = useState("");
-    const [searchAr, setsearchAr] = useState("");
-    useEffect( async() => {
-        const result = await axios.get("http://localhost:5000/Food",{
-         headers:{ authorization : "Bearer " + token},
+ const [ food, setFood] = useState([]);
+ const [ name , setName ] = useState("");
+ const [ description, setDescription ] = useState("");
+ const [ img, setImg ] = useState("");
+const [searchAr, setsearchAr] = useState("");
+useEffect( async() => {
+ const result = await axios.get("http://localhost:5000/Food",{
+  headers:{ authorization : "Bearer " + token},
         });
-        console.log(result.data);
-        setFood(result.data);
+
+ console.log(result.data);
+  setFood(result.data);
         // ^ باليوس افكت نستقبل البيانات من الباك اند
-    },[] )
+  },[] )
   
-    const changeName =(e)=>{
-     setName(e.target.value)
-    }
+const changeName =(e)=>{
+ setName(e.target.value)
+}
 
-    const changeDisc = (e)=>{
-     setDescription(e.target.value)
-    }
+ const changeDisc = (e)=>{
+  setDescription(e.target.value)
+}
 
-    const changeImg = (e)=>{
-        setImg(e.target.value)
-    }
+const changeImg = (e)=>{
+  setImg(e.target.value)
+ }
 
-    const addFood =async ()=>{
-       const respons = await axios.post("http://localhost:5000/Food",
-       {newName:name, newDescription:description, newImg:img },
-       {headers: { authorization: "Bearer "+ token}}
+const addFood =async ()=>{
+ const respons = await axios.post("http://localhost:5000/Food",
+ {newName:name, newDescription:description, newImg:img },
+    {headers: { authorization: "Bearer "+ token}}
       // ^ استخدمنا الهيدر والاثنتوكيشن عشان نعرف المستخدم اللي ضاف او حذف وهكذا
 
-       )
-       const copyArr = [...food]
-       copyArr.push(respons.data);
-       setFood (copyArr);
+ )
+ const copyArr = [...food]
+ copyArr.push(respons.data);
+  setFood (copyArr);
        
-    }
+}
 
-    const deletFood = async(id,index)=>{
-        const deletFood = await axios.delete(`http://localhost:5000/Food/${id}`,{
-            headers:{authorization:"Bearer " + token},
-        })
-            const copyArr = [...food];
-            copyArr.splice(index,1);
-            setFood(copyArr);
+const deletFood = async(id,index)=>{
+ const deletFood = await axios.delete(`http://localhost:5000/Food/${id}`,{
+  headers:{authorization:"Bearer " + token},
+ });
+
+const copyArr = [...food];
+copyArr.splice(index,1);
+ setFood(copyArr);
         
+ }
+
+  const searchTarg = (e)=>{
+    setsearchAr(e.target.value)
+  }
+  const searArr = ()=> {
+   const search1 = food.filter((element) => {
+   if (element.name.toLowerCase().includes(searchAr.toLocaleLowerCase)){
+    return searchAr;
+  }
+
+ console.log(searchAr);
+   return searchAr;
+  });
+
+    setsearchAr(search1);
+    console.log(search1);
+
     }
-
-    // const searchTarg = (e)=>{
-    //     setsearchAr(e.target.value)
-    // }
-    // const searArr = ()=> {
-    //     const response = food.filter((element) => {
-    //         // if (element.name.toLowerCase().includes(searchAr.toLocaleLowerCase())){
-    //         //     return element;
-    //         // }
-
-    //         // console.log(searchAr);
-    //         return element.name.toLowerCase().includes("a")
-    //     });
-    //    setsearchAr(response);
-
-    //    console.log(response);
-
-    // }
 
 
     return (
         <div>
             
-     <input onChange={(e)=>{changeName(e)}} placeholder='name'/>
-     <input onChange={(e)=>{changeDisc(e)}} placeholder='discription' />
-     <input onChange={(e)=>{changeImg(e)}} placeholder='img' />
-     <button onClick={()=>{addFood()}}> add food </button>
-      {/* <button onClick={()=>{searArr()}}>search</button>
-            <input onChange={(e)=>{setsearchAr(e.target.value)}}placeholder='input'/> */}
-       {food.map((element, index)=>{
+ <input onChange={(e)=>{changeName(e)}} placeholder='name'/>
+ <input onChange={(e)=>{changeDisc(e)}} placeholder='discription' />
+ <input onChange={(e)=>{changeImg(e)}} placeholder='img' />
+ <button onClick={()=>{addFood()}}> add food </button>
+ <button onClick={()=>{searArr()}}>search</button>
+  <input onChange={(e)=>{searchTarg(e)}}placeholder='search'/>
+      {food.map((element, index)=>{
                 
-                return(
+     return (  
                     
-               <div className='Box'>
-                <h1 > {element.name}</h1>
-                <h2>{element.description}</h2>
-                <img style={{width: "300px" , height: "300px" , "border-radius": "8px",}} src={element.img}/>
-                <button onClick={()=>{deletFood(element._id,index)}}>remove</button>
-                {/* ^ عن طريق الماب قمنا بعرض الصور والبيانات بالصفحة */}
+ <div className='Box'>
+ <h1 > {element.name}</h1>
+ <h2>{element.description}</h2>
+ <img style={{width: "300px" , height: "300px" , "border-radius": "8px"}} src={element.img}/>
+ <button onClick={()=>{deletFood(element._id,index)}}>remove</button>
+       {/* ^ عن طريق الماب قمنا بعرض الصور والبيانات بالصفحة */}
 
                 
             
-                </div>
+</div>
                 
-                )
-            })} 
-        </div>
+ )
+    })};
+     </div>
     )
 }
 

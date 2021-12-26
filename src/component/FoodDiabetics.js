@@ -29,12 +29,13 @@ export default function FoodDiabetics({token}) {
 
     const AddDiad = async ()=>{
      const response = await axios.post("http://localhost:5000/FoDiab", {
-      name, description, img},
+      newName: name, newDescription: description , newImg: img},
       { headers: {authorization: "Bearer " + token}})
         
     const copyed = [...FoodDiab];
     copyed.push(response.data)
     setFoodDiab(copyed)
+    console.log(AddDiad);
   
     }
 
@@ -49,7 +50,10 @@ export default function FoodDiabetics({token}) {
     }
     return (
       <div>
-            
+     <input onChange={(e)=>{changeName(e)}} placeholder='name'/>
+     <input onChange={(e)=>{changeDisc(e)}} placeholder='discription' />
+     <input onChange={(e)=>{changeImg(e)}} placeholder='img' />
+     <button onClick={()=>{AddDiad()}}> add food </button>
     {FoodDiab.map((element, index) =>{
         return (
 
@@ -58,11 +62,8 @@ export default function FoodDiabetics({token}) {
     <h2>{element.description}</h2>
      <img style={{width: "300px" , height: "300px" , "border-radius": "8px",}}
          src={element.img}/>
-     <input onChange={(e)=>{changeName(e)}} placeholder='name'/>
-     <input onChange={(e)=>{changeDisc(e)}} placeholder='discription' />
-     <input onChange={(e)=>{changeImg(e)}} placeholder='img' />
-     <button onClick={()=>{AddDiad()}}> add food </button>
-     <button onClick={()=>{delDiad(element._id,index)}}>remove</button>
+     
+     <button onClick={()=>{delDiad(element._id, index)}}>remove</button>
 
                 </div>
          )})}

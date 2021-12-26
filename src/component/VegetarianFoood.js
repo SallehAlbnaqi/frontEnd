@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 
 export default function VegetarianFoood({token}) {
-    const [veget, setVeget] = useState([])
+    const [Veget, setVeget] = useState([])
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [img, setImg] = useState("");
@@ -29,37 +29,49 @@ const changImg = (e)=>{
 const addVeget = async ()=>{
  const response = await axios.post("http://localhost:5000/veget",{
     newName: name , newDescription: description, newImg: img},
-    {headers: {authorization: "Bearer " + token}}
-
+    {headers: {authorization: "Bearer " + token}},
 )
     
-  const copyAr = [...veget];
+  const copyAr = [...Veget];
   copyAr.push(response.data)
   setVeget(copyAr);
   console.log(copyAr);
 }
 
-    return (
-        <div>
 
-     {veget.map((element) =>{
+const deleVeget =  async (id, index)=>{
+ const delet = await axios.delete(`http://localhost:5000/veget/${id}`,{
+     headers: {authorization: "Bearer " + token},
+ });
 
-      return(
+ const copyArray = [...Veget];
+ copyArray.splice(index,1);
+ setVeget(copyArray);
+ console.log(copyArray);
+};
+
+ return (
+     
+     <div>
+
+ <input onChange={(e)=>{changName(e)}} placeholder='name' />
+ <input onChange={(e)=>{changDes(e)}}  placeholder='description'/>
+ <input onChange={(e)=>{changImg(e)}} placeholder='img'/>
+ <button onClick={()=>{addVeget()}} >add</button>
+ 
+   {Veget.map((element, index) =>{
+         return(
 
   <div>
-
 
  <h1>{element.name}</h1>
  <h2>{element.description}</h2>
  <img style={{width: "300px" , height: "300px" , "border-radius": "8px",}}
        src={element.img}/>
-       
- <input onChange={(e)=>{changName(e)}} placeholder='name' />
- <input onChange={(e)=>{changDes(e)}}  placeholder='description'/>
- <input onChange={(e)=>{changImg(e)}} placeholder='img'/>
-        <button onClick={()=>{addVeget()}} >add</button>
+    <button onClick={()=>{deleVeget(element._id, index)}}>remove</button>
+
     </div>
-              )
+  )
   })};
      </div>
     )

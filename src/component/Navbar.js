@@ -37,15 +37,15 @@ export default function Navbar ({ token, setToken}){
     //  </ul>
 <ul className="ul1">
     
-            <li className="w3-button w3-inline w3-light white" id="ccvv"><Link id="ccvv" className="homelink" to="/Home">Home </Link></li>
-            <li className="w3-button w3-inline w3-light white" id="NavbarTitle"><Link  to="/VegetarianFoood">VegetarianFoood</Link></li>
-            <li className="w3-button w3-inline w3-light white" id="NavbarTitle"><Link  to="/Diet"> Diet</Link></li>
-            <li className="w3-button w3-inline w3-light white" id="NavbarTitle"><Link  to="/FoodDiabetics">FoodDiabetics</Link></li>
+    <li className="w3-button w3-inline w3-light white" id="ccvv"><Link id="ccvv" className="homelink" to="/Home">Home </Link></li>
+    <li className="w3-button w3-inline w3-light white" id="NavbarTitle"><Link  to="/VegetarianFoood">VegetarianFoood</Link></li>
+    <li className="w3-button w3-inline w3-light white" id="NavbarTitle"><Link  to="/Diet"> Diet</Link></li>
+    <li className="w3-button w3-inline w3-light white" id="NavbarTitle"><Link  to="/FoodDiabetics">FoodDiabetics</Link></li>
             
-            <li className="w3-button w3-inline w3-light white" id="NavbarTitle"><Link  to="/logout" onClick={()=>{setToken("")  
-             }}>log out</Link></li>
+    <li className="w3-button w3-inline w3-light white" id="NavbarTitle"><Link  to="/logout" onClick={()=>{setToken("")  
+     }}>log out</Link></li>
 
-            </ul>
+    </ul>
       ) : (
       <div>
    <ul>
