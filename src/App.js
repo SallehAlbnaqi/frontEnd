@@ -11,8 +11,12 @@ import "./App.css"
 
 
 export default function App(){
-  const [ token, setToken ] = useState("");
    
+  const [token , setToken] = useState(()=>{
+    const save = localStorage.getItem("token");
+    const initVal = JSON.parse(save);
+    return initVal || "";
+  })
 
   return (
     <div>

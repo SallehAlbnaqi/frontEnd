@@ -64,7 +64,7 @@ copyArr.splice(index,1);
     return searchAr;
   }
 
- console.log(searchAr);
+  setFood(searArr)
    return searchAr;
   });
 
@@ -77,12 +77,12 @@ copyArr.splice(index,1);
     return (
         <div>
             
- <input onChange={(e)=>{changeName(e)}} placeholder='name'/>
- <input onChange={(e)=>{changeDisc(e)}} placeholder='discription' />
- <input onChange={(e)=>{changeImg(e)}} placeholder='img' />
- <button onClick={()=>{addFood()}}> add food </button>
- <button onClick={()=>{searArr()}}>search</button>
-  <input onChange={(e)=>{searchTarg(e)}}placeholder='search'/>
+ <input className='inputAddFod' onChange={(e)=>{changeName(e)}} placeholder='name'/>
+ <input className='inputAddFod'  onChange={(e)=>{changeDisc(e)}} placeholder='discription' />
+ <input className='inputAddFod'  onChange={(e)=>{changeImg(e)}} placeholder='img' />
+ <button className='butAddFod' onClick={()=>{addFood()}}> add food </button>
+ <button className='butSearch' onClick={()=>{searArr()}}>search</button>
+  <input className='inputSearch' onChange={(e)=>{searchTarg(e)}}placeholder='search'/>
       {food.map((element, index)=>{
                 
      return (  

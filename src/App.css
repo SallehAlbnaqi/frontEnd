@@ -6,14 +6,19 @@
     
  }
 
+
 .liToken {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: rgb(218, 198, 198);
+
+
+
   }
   
+
   .link {
     float: left;
     display: block;
@@ -23,18 +28,22 @@
     text-decoration: none;
   } 
   
+
    li a {
     display: block;
     /* color: white; */
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+
   }
    
   /* Change the link color to #111 (black) on hover */ 
   /* li a:hover {
     background-color: #111;
   } */
+
+
   .logSig{
       padding: 250px;
       list-style-type: none;
@@ -42,6 +51,8 @@
     
     overflow: auto;
     background-color:rgb(163, 146, 146); 
+
+
   }
 
   .InputLog{
@@ -52,12 +63,28 @@
     font-size: 20px;
     padding-left: 300px;
     border-bottom:20px solid #e0d2d2; 
-    margin: 20px;
-    
+    margin-top: 20px;
     
     
      
   } 
+/* 
+  .name {
+    margin-top: 20px;
+
+  }
+
+  .email {
+    margin-top: 20px;
+
+  }
+
+  .pass {
+
+    margin-top: 20px;
+  } */
+
+
   .Box{
     display: grid;
     grid-template-columns:repeat(3,auto);
@@ -94,5 +121,56 @@
   padding: 50px;
   border-radius: 20px
   
+
  }
 
+.inputAddFod {
+
+  
+  
+  box-sizing: border-box;
+  font-size: px;
+  padding-left: 30px;
+    /* border-bottom:20px solid #e0d2d2;  */
+  margin-top: px;
+
+} 
+
+.butAddFod {
+
+  width: 85x;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 3px;
+  height: 33px;
+  margin: 5px;
+  justify-content: center ;
+
+}
+
+.butSearch {
+
+  width: 85x;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 7px;
+  height: 34px;
+  margin: 5px;
+  justify-content: center ;
+  float: right;
+  
+
+}
+
+.inputSearch {
+
+  box-sizing: border-box;
+  font-size: px;
+  padding-left: 30px;
+    /* border-bottom:20px solid #e0d2d2;  */
+  margin-top: 9px;
+  float: right;
+  
+}

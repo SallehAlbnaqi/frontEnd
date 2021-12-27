@@ -39,7 +39,7 @@ const addUs = async ()=>{
 
   <div className="InputLog" >
     
-    <input placeholder="name" onChange={(e)=>{changName(e)}}/>
+    <input  placeholder="name" onChange={(e)=>{changName(e)}}/>
     <input placeholder="email" onChange={(e)=>{changEmail(e)}}/>
     <input placeholder="pass" onChange={(e)=>{changPass(e)}}/>
     
