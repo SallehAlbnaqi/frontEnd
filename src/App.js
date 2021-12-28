@@ -6,6 +6,7 @@ import Diet from "./component/Diet";
 import Navbar from "./component/Navbar";
 import FoodDiabetics from './component/FoodDiabetics';
 import VegetarianFoood from './component/VegetarianFoood';
+import Profille from './component/Profille';
 import { Route } from "react-router-dom";
 import "./App.css"
 
@@ -31,10 +32,12 @@ export default function App(){
         return <VegetarianFoood token={token}/>
       }}/>
       
+      <Route exact path="/Profille" render ={()=>{
+        return <Profille token={token}/>
+      }}/>
       
       <Route exact path="/Login" render ={()=>{
         return <Login setToken={setToken}/>
-
         // لازم نربط كل التشايلد بالاب عشان نقدر نشتغل عليهن
         // عن طريق الراوت
         

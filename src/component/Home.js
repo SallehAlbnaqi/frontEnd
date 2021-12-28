@@ -8,7 +8,7 @@ export default function Home({token}) {
  const [ name , setName ] = useState("");
  const [ description, setDescription ] = useState("");
  const [ img, setImg ] = useState("");
-const [searchAr, setsearchAr] = useState("");
+// const [searchAr, setsearchAr] = useState("");
 useEffect( async() => {
  const result = await axios.get("http://localhost:5000/Food",{
   headers:{ authorization : "Bearer " + token},
@@ -44,6 +44,12 @@ const addFood =async ()=>{
        
 }
 
+// const putFood = async (id,index)=>{
+//   const res = await axios.put(`http://localhost:5000/FoodUpb/${id}`, {
+
+//   })
+// }
+
 const deletFood = async(id,index)=>{
  const deletFood = await axios.delete(`http://localhost:5000/Food/${id}`,{
   headers:{authorization:"Bearer " + token},
@@ -55,23 +61,23 @@ copyArr.splice(index,1);
         
  }
 
-  const searchTarg = (e)=>{
-    setsearchAr(e.target.value)
-  }
-  const searArr = ()=> {
-   const search1 = food.filter((element) => {
-   if (element.name.toLowerCase().includes(searchAr.toLocaleLowerCase)){
-    return searchAr;
-  }
+  // const searchTarg = (e)=>{
+  //   setsearchAr(e.target.value)
+  // }
+  // const searArr = ()=> {
+  //  const search1 = food.filter((element) => {
+  //  if (element.name.toLowerCase().includes(searchAr.toLocaleLowerCase)){
+  //   return searchAr;
+  // }
 
-  setFood(searArr)
-   return searchAr;
-  });
+  // setFood(searArr)
+  //  return searchAr;
+  // });
 
-    setsearchAr(search1);
-    console.log(search1);
+    // setsearchAr(search1);
+    // console.log(search1);
 
-    }
+    // }
 
 
     return (
@@ -81,8 +87,10 @@ copyArr.splice(index,1);
  <input className='inputAddFod'  onChange={(e)=>{changeDisc(e)}} placeholder='discription' />
  <input className='inputAddFod'  onChange={(e)=>{changeImg(e)}} placeholder='img' />
  <button className='butAddFod' onClick={()=>{addFood()}}> add food </button>
- <button className='butSearch' onClick={()=>{searArr()}}>search</button>
-  <input className='inputSearch' onChange={(e)=>{searchTarg(e)}}placeholder='search'/>
+ {/* <button className='butSearch' onClick={()=>{searArr()}}>search</button>
+  <input className='inputSearch' onChange={(e)=>{searchTarg(e)}}placeholder='search'/> */}
+  
+  <h1>أهلا وسهلا بكم في موقع ( عرض الاطعمة )</h1>
       {food.map((element, index)=>{
                 
      return (  
@@ -94,7 +102,7 @@ copyArr.splice(index,1);
  <button onClick={()=>{deletFood(element._id,index)}}>remove</button>
        {/* ^ عن طريق الماب قمنا بعرض الصور والبيانات بالصفحة */}
 
-                
+              
             
 </div>
                 
