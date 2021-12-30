@@ -1,11 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 export default function VegetarianFoood({token}) {
     const [Veget, setVeget] = useState([])
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [img, setImg] = useState("");
+    const history = useHistory();
+
+
  useEffect( async() => {
     const response = await axios.get("http://localhost:5000/veget", {
      headers: {authorization: "Bearer " + token},
@@ -13,6 +17,11 @@ export default function VegetarianFoood({token}) {
     setVeget(response.data)
 // console.log(response.data);
     }, [])
+
+
+    const GoToVegetFood = (id) =>{
+      history.push(`/VegetFood/${id}`);
+  }
 
  const changName = (e)=>{
    setName(e.target.value);
@@ -66,7 +75,7 @@ const deleVeget =  async (id, index)=>{
 
  <h1>{element.name}</h1>
  <h2>{element.description}</h2>
- <img style={{width: "300px" , height: "300px" , "border-radius": "8px",}}
+ <img onClick={()=>{GoToVegetFood(element._id)}}  style={{width: "300px" , height: "300px" , "border-radius": "8px",}}
        src={element.img}/>
     <button onClick={()=>{deleVeget(element._id, index)}}>remove</button>
 

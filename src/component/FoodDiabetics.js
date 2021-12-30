@@ -1,12 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import { useHistory } from "react-router-dom";
+
 
 export default function FoodDiabetics({token}) {
     const [FoodDiab, setFoodDiab] = useState([]);
     const [name, setName] = useState ("");
     const [description, setDescription] = useState("");
     const [img , setImg] = useState("");
-  
+    const history = useHistory();
+
     useEffect( async () => {
         const response = await axios.get("http://localhost:5000/FoDiab",{
             headers: {authorization: "Bearer " + token}
@@ -14,6 +17,10 @@ export default function FoodDiabetics({token}) {
         setFoodDiab(response.data);
     //   console.log(response.data);
     }, [])
+
+    const GoToFood = (id) =>{
+        history.push(`/Food/${id}`);
+    }
 
     const changeName = (e) =>{
         setName(e.target.value); 
@@ -55,12 +62,18 @@ export default function FoodDiabetics({token}) {
      <input onChange={(e)=>{changeImg(e)}} placeholder='img' />
      <button onClick={()=>{AddDiad()}}> add food </button>
     {FoodDiab.map((element, index) =>{
+
+
         return (
 
           <div>
+         {/* <img  onClick={() => {
+              GoToFood(element.id);
+            }} src={element.url} />
+            <h1>{element.name}</h1> */}
     <h1>{element.name}</h1>
     <h2>{element.description}</h2>
-     <img style={{width: "300px" , height: "300px" , "border-radius": "8px",}}
+     <img onClick={()=>{GoToFood(element._id)}}  style={{width: "300px" , height: "300px" , "border-radius": "8px",}}
          src={element.img}/>
      
      <button onClick={()=>{delDiad(element._id, index)}}>remove</button>

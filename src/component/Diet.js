@@ -1,10 +1,15 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
+import { useHistory } from "react-router-dom";
+// import { useParams } from 'react-router-dom';
+
 export default function Diet({token}) {
 const [Diet , setDiet] = useState([]);
+// const {id} = useParams();
 const [name , setName] = useState("");
 const [description , setDescription] = useState("");
 const [img , setImg] = useState("");
+const history = useHistory();
 
  useEffect( async() => {
    console.log("saleeh");
@@ -14,7 +19,12 @@ const result = await axios.get("http://localhost:5000/Diet",{
 
     setDiet(result.data);
      console.log(result.data);
-    }, [])
+    }, []);
+
+
+   const goFodDiet = (id)=>{
+     history.push(`/DietFood/${id}`) 
+    }
 
     const changInN = (e)=>{
      setName(e.target.value);
@@ -63,7 +73,7 @@ const result = await axios.get("http://localhost:5000/Diet",{
       <div >
       <h1 > {element.name}</h1>
       <h2>{element.description}</h2>
-      <img style={{width: "300px" , height: "300px" , "border-radius": "8px",}} 
+      <img onClick={()=>{goFodDiet(element._id)}} style={{width: "300px" , height: "300px" , "border-radius": "8px",}}
          src={element.img}/>
       
       <button onClick={()=>{delDiet(element._id, index)}}>remove</button>

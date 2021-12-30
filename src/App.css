@@ -1,5 +1,5 @@
  body {
-   background-image: url("");
+   background-image: url("https://png.pngtree.com/background/20210710/original/pngtree-restaurant-food-poster-background-material-picture-image_1021736.jpg");
    background-repeat: no-repeat;
    background-size:cover;
 
@@ -173,4 +173,46 @@
   margin-top: 9px;
   float: right;
   
+}
+
+
+.imgDiet{
+  display: flex;
+  
+  
+}
+
+
+.title{
+  color: rgb(165, 178, 196);
+  text-align: center;
+  padding: 70px;
+  font-family: 'Franklin Gothic Medium','Arial Narrow', Arial, sans-serif;
+
+}
+
+
+.parag{
+
+  color: #b8a8a8;
+  font-size: large;
+  max-width: 1000px;
+  height: 70;
+  margin: auto;
+  border: 3px solid rgba(192, 189, 197, 0.867);
+  padding: 79px;
+   
+}
+
+
+/* .Food{
+  background-color: rgb(175, 175, 150);
+   
+} */
+
+
+.imgFood{
+  width: 250px;
+  height: 300px;
+  margin-right: 100px;
 }

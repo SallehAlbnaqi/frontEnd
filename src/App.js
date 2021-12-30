@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Home from './component/Home';
 import Login from "./component/Login";
 import SignUp from './component/SignUp';
@@ -7,17 +7,30 @@ import Navbar from "./component/Navbar";
 import FoodDiabetics from './component/FoodDiabetics';
 import VegetarianFoood from './component/VegetarianFoood';
 import Profille from './component/Profille';
+import Food from './component/Food'
+import DietFood from './component/DietFood';
+import VegetFood from './component/VegetFood'
 import { Route } from "react-router-dom";
 import "./App.css"
 
 
 export default function App(){
-   
-  const [token , setToken] = useState(()=>{
-    const save = localStorage.getItem("token");
-    const initVal = JSON.parse(save);
-    return initVal || "";
-  })
+const [token , setToken] = useState(()=>{
+    
+  const save = localStorage.getItem("token");
+  const initVal = JSON.parse(save);
+  return initVal || "";
+
+  });
+
+  useEffect(() => {
+    localStorage.setItem("token", JSON.stringify(token));
+// ^ اذا سوينا تحديث للصفحة يصير التوكن سترينغ 
+  }, [token])
+
+  
+  
+
 
   return (
     <div>
@@ -30,6 +43,18 @@ export default function App(){
       }}/>
        <Route exact path="/VegetarianFoood" render ={()=>{
         return <VegetarianFoood token={token}/>
+      }}/>
+
+      <Route exact path="/Food/:id" render ={()=>{
+        return <Food token={token}/>
+      }}/>
+
+     <Route exact path="/DietFood/:id" render ={()=>{
+        return <DietFood token={token}/>
+      }}/>
+
+     <Route exact path="/VegetFood/:id" render ={()=>{
+        return <VegetFood token={token}/>
       }}/>
       
       <Route exact path="/Profille" render ={()=>{
