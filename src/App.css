@@ -1,5 +1,5 @@
  body {
-   background-image: url("https://png.pngtree.com/background/20210710/original/pngtree-restaurant-food-poster-background-material-picture-image_1021736.jpg");
+   background-image: url("https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2FsbCUyMGJhY2tncm91bmR8ZW58MHx8MHx8&w=1000&q=80");
    background-repeat: no-repeat;
    background-size:cover;
 
@@ -31,7 +31,7 @@
 
    li a {
     display: block;
-    /* color: white; */
+    color: rgb(253, 250, 253);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -63,11 +63,15 @@
     font-size: 20px;
     padding-left: 300px;
     border-bottom:20px solid #e0d2d2; 
-    margin-top: 20px;
+    margin-top: 2px;
     
+
+    
+ };
+ 
     
      
-  } 
+  
 /* 
   .name {
     margin-top: 20px;
@@ -184,7 +188,7 @@
 
 
 .title{
-  color: rgb(165, 178, 196);
+  color: #e9ecef;
   text-align: center;
   padding: 70px;
   font-family: 'Franklin Gothic Medium','Arial Narrow', Arial, sans-serif;
@@ -194,7 +198,7 @@
 
 .parag{
 
-  color: #b8a8a8;
+  color: #e9ecef;
   font-size: large;
   max-width: 1000px;
   height: 70;
@@ -215,4 +219,21 @@
   width: 250px;
   height: 300px;
   margin-right: 100px;
+}
+
+.h1{
+
+  font-size: 19px;
+}
+
+.center{
+
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  justify-content: center;
+  /* float: left; */
+  padding: 17px;
+  /* content: ""; */
+  
+
 }

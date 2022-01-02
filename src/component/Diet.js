@@ -70,15 +70,17 @@ const result = await axios.get("http://localhost:5000/Diet",{
 
    {Diet.map((element, index)=>{
      return(
-      <div >
-      <h1 > {element.name}</h1>
-      <h2>{element.description}</h2>
-      <img onClick={()=>{goFodDiet(element._id)}} style={{width: "300px" , height: "300px" , "border-radius": "8px",}}
-         src={element.img}/>
+      <div className='h1' >
+      <h1 className='h1' style={{color:"white"}}> {element.name}</h1>
+      {/* <h2 className='h1' style={{color:"white"}}>{element.description}</h2> */}
       
+      <img className='center' onClick={()=>{goFodDiet(element._id)}} style={{width: "380px" , height: "330px" , "border-radius": "8px",}}
+         src={element.img}/>
       <button onClick={()=>{delDiet(element._id, index)}}>remove</button>
+            
       </div>
-         )})};
+
+      )})};
 
     </div>
     )

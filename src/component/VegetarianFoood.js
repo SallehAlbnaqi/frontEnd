@@ -73,10 +73,11 @@ const deleVeget =  async (id, index)=>{
 
   <div>
 
- <h1>{element.name}</h1>
- <h2>{element.description}</h2>
+ <h1 className='h1' style={{color:"white"}}>{element.name}</h1>
+ {/* <h2 className='h1' style={{color:"white"}}>{element.description}</h2> */}
  <img onClick={()=>{GoToVegetFood(element._id)}}  style={{width: "300px" , height: "300px" , "border-radius": "8px",}}
        src={element.img}/>
+       <br/>
     <button onClick={()=>{deleVeget(element._id, index)}}>remove</button>
 
     </div>

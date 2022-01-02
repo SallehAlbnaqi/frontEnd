@@ -6,6 +6,7 @@ import { useHistory ,useParams } from "react-router-dom";
 export default function DietFood({token}) {
   const[Diet, setDiet] = useState(""); 
   const {id} = useParams();
+  // ^ مررنا الايدي عشان اعرف الايدي تبع اليوزر 
  const history = useHistory();
 
 useEffect( async() => {
@@ -23,11 +24,10 @@ useEffect( async() => {
     return (
         
         <div>
-            
-      <h1>{Diet.name}</h1>
-      <h2>{Diet.description}</h2>
-      <img onClick={()=>{goFodDiet(Diet._id)}} style={{width: "300px" , height: "300px" , "border-radius": "8px",}}
-         src={Diet.img}/>
+        {Diet && <><h1 className='h1' style={{color:"white"}}>{Diet.name}</h1>
+        <h2 className='h1' style={{color:"white"}} >{Diet.description}</h2>
+        <img  style={{width: "300px" , height: "300px" , "border-radius": "8px", }}
+           src={Diet.img}/></>}    
         </div>
     )
 }

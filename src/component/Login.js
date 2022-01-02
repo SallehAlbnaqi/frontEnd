@@ -6,9 +6,12 @@ import { useHistory } from "react-router";
 export default function Login ({ setToken }){
     // جبنا السيت من الاب
     // ^ فانكشن نمرره عشان نعدل على التوكن
+
 const [ email, setEmail] = useState("");
 const [ password, setPassword ] = useState("");
 const history = useHistory();
+
+
  const changeEml = (e)=>{
     setEmail(e.target.value)    
  }
@@ -16,11 +19,17 @@ const history = useHistory();
     setPassword(e.target.value)
  }
  const login = async ()=> {
+     
      const result = await axios.post("http://localhost:5000/login",{
          email, password
+        
      });
+    
      setToken(result.data.token)
      history.push("/Home")
+   
+     
+
  } 
 
 

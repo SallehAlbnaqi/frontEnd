@@ -21,8 +21,8 @@ useEffect( async () => {
         <>
         {FoodDiabetics !==null ? 
         <div className='Food'>
-        <h1>{FoodDiabetics.name}</h1>
-        <h1>{FoodDiabetics.description}</h1>
+        <h1 className='h1' style={{color:"white"}}>{FoodDiabetics.name}</h1>
+        <h1 className='h1' style={{color:"white"}}>{FoodDiabetics.description}</h1>
         <h1>{FoodDiabetics.data}</h1>
         <img src={FoodDiabetics.img} style={{width: "300px" , height: "300px" , "border-radius": "8px",}}  />
 
