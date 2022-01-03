@@ -43,9 +43,9 @@ export default function Navbar ({ token, setToken}){
     <li className="w3-button w3-inline w3-light white" id="NavbarTitle"><Link  to="/FoodDiabetics">FoodDiabetics</Link></li>
     {/* <li className="w3-button w3-inline w3-light white" id="NavbarTitle"><Link  to="/Food">Food</Link></li> */}
     <li className="w3-button w3-inline w3-light white" id="NavbarTitle"><Link  to="/Profille">profile</Link></li>
-
+    
             
-    <li  className="w3-button w3-inline w3-light white" id="NavbarTitle"><Link  to="/logout" onClick={()=>{setToken("")  
+    <li  className="logute"  ><Link  to="/logout" onClick={()=>{setToken("")  
      }}>log out</Link></li>
 
     </ul>

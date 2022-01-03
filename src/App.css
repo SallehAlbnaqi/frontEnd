@@ -1,8 +1,8 @@
  body {
-   background-image: url("https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2FsbCUyMGJhY2tncm91bmR8ZW58MHx8MHx8&w=1000&q=80");
+   background-image: url("https://png.pngtree.com/background/20210711/original/pngtree-western-food-leaflet-background-material-picture-image_1106681.jpg");
    background-repeat: no-repeat;
    background-size:cover;
-
+/* https://foodtrotter.com/wp-content/uploads/2020/04/cook-2364221_1280.jpg */
     
  }
 
@@ -20,31 +20,46 @@
   
 
   .link {
+    
     float: left;
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    
   } 
   
 
    li a {
+
     display: block;
     color: rgb(253, 250, 253);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-
+    /* background-color: rgb(12, 10, 10); */
   }
+
+  li a:hover {
+
+  /* background-color: rgb(12, 10, 10); */
+ color: rgb(253, 250, 253);
+  
+  }
+
+
+
    
   /* Change the link color to #111 (black) on hover */ 
   /* li a:hover {
+
     background-color: #111;
   } */
 
 
   .logSig{
+
       padding: 250px;
       list-style-type: none;
        margin: 0px;
@@ -52,7 +67,13 @@
     overflow: auto;
     background-color:rgb(163, 146, 146); 
 
+  }
 
+  .logute {
+
+    float: right;
+    margin: 10px;
+    color: rgb(253, 250, 253);
   }
 
   .InputLog{
@@ -74,11 +95,13 @@
   
 /* 
   .name {
+
     margin-top: 20px;
 
   }
 
   .email {
+
     margin-top: 20px;
 
   }
@@ -86,10 +109,12 @@
   .pass {
 
     margin-top: 20px;
+
   } */
 
 
   .Box{
+
     display: grid;
     grid-template-columns:repeat(3,auto);
     flex-direction: column;
@@ -100,12 +125,14 @@
 
 
  /* .img{
+
   width: 100px;
   height: 150px;
   
  } */
 
  .submit{
+
   width: 100px;
   font-size: 16px;
   font-weight: bold;
@@ -120,6 +147,7 @@
 
 
  .img{
+
   float: left;
   width: 105%;
   padding: 50px;
@@ -181,6 +209,7 @@
 
 
 .imgDiet{
+
   display: flex;
   
   
@@ -188,15 +217,21 @@
 
 
 .title{
-  color: #e9ecef;
+
+  color: #383b3f;
   text-align: center;
-  padding: 70px;
-  font-family: 'Franklin Gothic Medium','Arial Narrow', Arial, sans-serif;
+  padding: 130px;
+  /* font-family: 'Franklin Gothic Medium','Arial Narrow', Arial, sans-serif; */
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-size: 35px;
+  font-weight: bold;
+  
 
 }
 
 
 .parag{
+  
 
   color: #e9ecef;
   font-size: large;
@@ -216,14 +251,18 @@
 
 
 .imgFood{
+
   width: 250px;
   height: 300px;
   margin-right: 100px;
+
 }
 
 .h1{
 
   font-size: 19px;
+  color: wheat;
+
 }
 
 .center{
