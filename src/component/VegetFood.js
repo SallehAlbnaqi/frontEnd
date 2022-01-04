@@ -27,10 +27,10 @@ const goToVegetFood = (id)=>{
 return (
     
     <div>
-      
+
       <h1 className='h1' style={{color:"white"}}>{Veget.name}</h1>
       <h2 className='h1' style={{color:"white"}}>{Veget.description}</h2>
-      <img style={{width: "300px" , height: "300px" , "border-radius": "8px",}}
+      <img className='imgVeget' style={{width: "300px" , height: "300px" , "border-radius": "8px",}}
          src={Veget.img}/>
             
     </div>

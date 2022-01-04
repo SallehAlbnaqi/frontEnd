@@ -73,7 +73,7 @@ export default function FoodDiabetics({token}) {
             <h1>{element.name}</h1> */}
     <h1 className='h1' style={{color:"white"}}>{element.name}</h1>
     {/* <h2 className='h1' style={{color:"white"}}>{element.description}</h2> */}
-     <img onClick={()=>{GoToFood(element._id)}}  style={{width: "300px" , height: "300px" , "border-radius": "8px",}}
+     <img className='imgFoodDIAB' onClick={()=>{GoToFood(element._id)}}  style={{width: "300px" , height: "300px" , "border-radius": "8px",}}
          src={element.img}/>
      <br/>
      <button onClick={()=>{delDiad(element._id, index)}}>remove</button>

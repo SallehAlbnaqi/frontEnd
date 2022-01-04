@@ -262,7 +262,7 @@
 
   font-size: 19px;
   color: wheat;
-
+  margin: 20px;
 }
 
 .center{
@@ -271,8 +271,31 @@
   grid-template-columns: repeat(3, 350px);
   justify-content: center;
   /* float: left; */
-  padding: 17px;
+  padding: 13px;
   /* content: ""; */
+  border-radius: 12px;
   
+  
+  
+}
+
+.imgFoodDIAB {
+  
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  justify-content: center;
+  padding: 1px;
+  margin: 16px;
+ 
+}
+
+.imgVeget {
+
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  justify-content: center;
+  padding: 2px;
+  margin: 23px;
+ 
 
 }
