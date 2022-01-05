@@ -40,7 +40,7 @@ const result = await axios.get("http://localhost:5000/Diet",{
 
     const addDiet = async ()=>{
      const response = await axios.post("http://localhost:5000/Diet", {
-       newName: name, newDescription:description, newImg: img},
+       newName: name, newDescription:description, newImg: img, },
 
         { headers: {authorization: "Bearer " + token},
      })

@@ -36,7 +36,7 @@ export default function FoodDiabetics({token}) {
 
     const AddDiad = async ()=>{
      const response = await axios.post("http://localhost:5000/FoDiab", {
-      newName: name, newDescription: description , newImg: img},
+      newName: name, newDescription: description , newImg: img, },
       { headers: {authorization: "Bearer " + token}})
         
     const copyed = [...FoodDiab];

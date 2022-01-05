@@ -1,10 +1,11 @@
 import React, { useState , useEffect } from 'react'
 import axios from 'axios';
 import { useHistory ,useParams } from "react-router-dom";
-
+import "./DietFood.css"
 
 export default function DietFood({token}) {
   const[Diet, setDiet] = useState(""); 
+  // const [video, setVideo] = useState("");
   const {id} = useParams();
   // ^ مررنا الايدي عشان اعرف الايدي تبع اليوزر 
  const history = useHistory();
@@ -21,13 +22,24 @@ useEffect( async() => {
    const goFodDiet = (id)=>{
      history.push(`/DietFood/${id}`) 
     }
+    // let myid ="snpEQPgFlkU"
+
     return (
+
         
-        <div>
-        {Diet && <><h1 className='h1' style={{color:"white"}}>{Diet.name}</h1>
-        <h2 className='h1' style={{color:"white"}} >{Diet.description}</h2>
+        <div className='DietFoood'>
+        {Diet && <><h1 className='NameDiet' style={{color:"white"}}>{Diet.name}</h1>
         <img  style={{width: "300px" , height: "300px" , "border-radius": "8px", }}
-           src={Diet.img}/></>}    
+           src={Diet.img}/></>} 
+           {/* <iframe className='imgDiett'
+        
+        // src={`https://www.youtube.com/embed/${myid}`}
+        src={Diet.video}
+      ></iframe> */}
+      <iframe src={Diet.video} className="imgDiett" frameborder="0"></iframe>
+        <h2 className='NameDietFood' style={{color:"white"}} >{Diet.description}</h2>
+
         </div>
     )
 }
+// 
