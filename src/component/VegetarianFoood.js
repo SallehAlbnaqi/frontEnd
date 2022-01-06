@@ -7,6 +7,7 @@ export default function VegetarianFoood({token}) {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [img, setImg] = useState("");
+    const [video, setVideo] = useState("");
     const history = useHistory();
 
 
@@ -28,16 +29,22 @@ export default function VegetarianFoood({token}) {
  }
 
 const changDes = (e)=>{
- setDescription(e.target.value)
+ setDescription(e.target.value);
+
 }
 
 const changImg = (e)=>{
-   setImg(e.target.value)
+   setImg(e.target.value);
+
+}
+
+const changVideo = (e)=> {
+  setVideo(e.target.value);
 }
 
 const addVeget = async ()=>{
  const response = await axios.post("http://localhost:5000/veget",{
-    newName: name , newDescription: description, newImg: img},
+    newName: name , newDescription: description, newImg: img, newVideo: video},
     {headers: {authorization: "Bearer " + token}},
 )
     
@@ -66,6 +73,7 @@ const deleVeget =  async (id, index)=>{
  <input onChange={(e)=>{changName(e)}} placeholder='name' />
  <input onChange={(e)=>{changDes(e)}}  placeholder='description'/>
  <input onChange={(e)=>{changImg(e)}} placeholder='img'/>
+ <input onChange={(e)=>{changVideo(e)}} placeholder='video' />
  <button onClick={()=>{addVeget()}} >add</button>
  
    {Veget.map((element, index) =>{

@@ -9,6 +9,8 @@ const [Diet , setDiet] = useState([]);
 const [name , setName] = useState("");
 const [description , setDescription] = useState("");
 const [img , setImg] = useState("");
+const [video, setVideo] = useState("")
+const [comment, setComment] = useState([]);
 const history = useHistory();
 
  useEffect( async() => {
@@ -19,28 +21,39 @@ const result = await axios.get("http://localhost:5000/Diet",{
 
     setDiet(result.data);
      console.log(result.data);
+
     }, []);
 
 
    const goFodDiet = (id)=>{
      history.push(`/DietFood/${id}`) 
+
     }
 
     const changInN = (e)=>{
      setName(e.target.value);
+
     }
 
     const changInDes = (e)=>{
-      setDescription(e.target.value);
+     setDescription(e.target.value);
+
     }
 
     const changImg = (e)=>{
       setImg(e.target.value);
+
     }
+
+
+  const changVid = (e)=> {
+    setVideo(e.target.value)
+  }
+
 
     const addDiet = async ()=>{
      const response = await axios.post("http://localhost:5000/Diet", {
-       newName: name, newDescription:description, newImg: img, },
+       newName: name, newDescription:description, newImg: img, newVideo :video },
 
         { headers: {authorization: "Bearer " + token},
      })
@@ -66,6 +79,7 @@ const result = await axios.get("http://localhost:5000/Diet",{
    <input onChange={(e)=>{changInN(e)}} placeholder='name'/>
    <input onChange={(e)=>{changInDes(e)}} placeholder='description' />
    <input onChange={(e)=>{changImg(e)}} placeholder='img'/>
+   <input onChange={(e)=>{changVid(e)}} placeholder='video' />
    <button onClick={()=>{addDiet()}}>add</button>
 
    {Diet.map((element, index)=>{

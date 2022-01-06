@@ -1,28 +1,34 @@
-.FoodDiabed {
-
+.vegetFoood {
+ 
     padding: 100px;
     text-align: center;
 }
 
-.NameDiadbed{
+.imgveget {
+
+
+    text-align: center;
+    padding: 50px;
+    width:400px;
+    height: 400px;
+
+}
+
+
+.NameVeget {
+ 
     text-align: center;
     font: large;
     padding: 29px;
+
 }
 
-.discrFood{
+
+.discImg {
 
     font-size: 19px;
     color: wheat;
     margin: 20px;
     padding: 2px;
+    
 }
-
-.imgFodDiab{
-
-    text-align: center;
-      padding: 50px;
-      width:400px;
-      height: 400px;
-}
-

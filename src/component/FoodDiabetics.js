@@ -8,6 +8,7 @@ export default function FoodDiabetics({token}) {
     const [name, setName] = useState ("");
     const [description, setDescription] = useState("");
     const [img , setImg] = useState("");
+    const [video, setVideo] = useState("");
     const history = useHistory();
 
     useEffect( async () => {
@@ -24,19 +25,26 @@ export default function FoodDiabetics({token}) {
 
     const changeName = (e) =>{
         setName(e.target.value); 
+
     }
 
     const changeDisc = (e) =>{
-        setDescription(e.target.value)
+        setDescription(e.target.value);
+
     }
 
     const changeImg = (e) =>{
-        setImg(e.target.value)
+        setImg(e.target.value);
+
+    }
+
+    const changVidd = (e)=>{
+        setVideo(e.target.value)
     }
 
     const AddDiad = async ()=>{
      const response = await axios.post("http://localhost:5000/FoDiab", {
-      newName: name, newDescription: description , newImg: img, },
+      newName: name, newDescription: description , newImg: img, newVideo: video },
       { headers: {authorization: "Bearer " + token}})
         
     const copyed = [...FoodDiab];
@@ -60,6 +68,7 @@ export default function FoodDiabetics({token}) {
      <input onChange={(e)=>{changeName(e)}} placeholder='name'/>
      <input onChange={(e)=>{changeDisc(e)}} placeholder='discription' />
      <input onChange={(e)=>{changeImg(e)}} placeholder='img' />
+     <input onChange={(e)=>{changVidd(e)}} placeholder='video' />
      <button onClick={()=>{AddDiad()}}> add food </button>
     {FoodDiab.map((element, index) =>{
 
