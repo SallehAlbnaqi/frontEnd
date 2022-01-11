@@ -4,7 +4,8 @@ import { useHistory, useParams } from "react-router-dom";
 import "./DietFood.css";
 
 export default function DietFood({ token }) {
-  const [Diet, setDiet] = useState("");
+  const [Diet, setDiet] = useState(null);
+  const [user, setuser] = useState([])
   const [comment, setComment] = useState([]);
   const { id } = useParams();
   // ^ مررنا الايدي عشان اعرف الايدي تبع اليوزر
@@ -17,6 +18,11 @@ export default function DietFood({ token }) {
 
     setDiet(response.data);
     console.log(response.data, "data");
+    const result = await axios.get("http://localhost:5000/user", {
+      headers: {authorization: "Bearer " + token}
+    });
+ 
+    setuser(result.data);
   }, []);
 
   const goFodDiet = (id) => {
@@ -24,12 +30,8 @@ export default function DietFood({ token }) {
   };
 
   const postComment = async () => {
-    const res = await axios.post(
-      `http://localhost:5000/AddComment/${id}`,
-      {
-        comment: comment,
-      },
-      { headers: { authorization: "Bearer " + token } }
+    const res = await axios.post(`http://localhost:5000/AddComment/${id}`,
+      { comment: comment }, { headers: { authorization: "Bearer " + token } }
     );
     setDiet({ ...Diet, comment: res.data.comment });
     console.log(res);
@@ -39,9 +41,20 @@ export default function DietFood({ token }) {
     setComment(e.target.value);
   };
 
+
+  const deletComDiet = async (comment)=>{
+     const result = await axios.put(`http://localhost:5000/Comment/${id}`,
+     {comment: comment}, {headers: {authorization: "Bearer " + token}},
+     
+     );
+          
+     setDiet({...Diet, comment: result.data.comment});
+  }
+
   return (
     <div className="DietFoood">
       {Diet && (
+        
         <>
           <h1 className="NameDiet" style={{ color: "white" }}>
             {Diet.name}
@@ -50,28 +63,20 @@ export default function DietFood({ token }) {
             style={{ width: "300px", height: "300px", "border-radius": "8px" }}
             src={Diet.img}
           />
-        </>
-      )}
-
-      <input
-        onChange={(e) => {
-          inpCom(e);
-        }}
-        placeholder="comment"
-      />
-      <button
-        onClick={() => {
-          postComment();
-        }}
-      >
-        add comment
-      </button>
       <iframe src={Diet.video} className="imgDiett" frameborder="0"></iframe>
       <h2 className="NameDietFood" style={{ color: "white" }}>
         {Diet.description}
       </h2>
-      {Diet &&
-        Diet.comment.map((element, index) => {
+        </>
+      )}
+
+    
+ 
+
+      <input onChange={(e) => {inpCom(e)}} placeholder="comment"/>
+      <button onClick={() => {postComment()}}>add comment</button>
+      
+      {Diet && Diet.comment.map((element, index) => {
           console.log(element);
           return (
             <div>
@@ -80,9 +85,13 @@ export default function DietFood({ token }) {
                 <br/>
                 {element.comment}
               </p>
+              {element.userId == user._id? <button onClick={()=>{deletComDiet(element.comment)}}>remove</button>:""}
             </div>
           );
         })}
     </div>
   );
 }
+
+
+// 

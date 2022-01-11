@@ -1,7 +1,7 @@
 .TITEL{
     
   color: rgb(238, 234, 234);
-  font-size: 18px;
+  font-size: 30px;
      
 }
 
@@ -9,12 +9,15 @@
 
     width: 25%;
     margin: 5% auto;
+    
 }
 
 .IMG{
 
     width: 300px;
     height: 300px;
+    padding: 10px;
+   
     
 };
 

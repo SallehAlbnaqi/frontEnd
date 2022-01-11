@@ -3,8 +3,9 @@ import axios from 'axios';
 import { useHistory } from "react-router-dom";
 // import { useParams } from 'react-router-dom';
 
-export default function Diet({token}) {
+export default function Diet({token, admin}) {
 const [Diet , setDiet] = useState([]);
+const [user, setuser] = useState([])
 // const {id} = useParams();
 const [name , setName] = useState("");
 const [description , setDescription] = useState("");
@@ -21,6 +22,12 @@ const result = await axios.get("http://localhost:5000/Diet",{
 
     setDiet(result.data);
      console.log(result.data);
+     if (token) {
+      const response = await axios.get("http://localhost:5000/user", {
+        headers: { authorization: "Bearer " + token },
+      });
+      setuser(response.data);
+    }
 
     }, []);
 
@@ -76,21 +83,28 @@ const result = await axios.get("http://localhost:5000/Diet",{
     return (
         
  <div>
-   <input onChange={(e)=>{changInN(e)}} placeholder='name'/>
-   <input onChange={(e)=>{changInDes(e)}} placeholder='description' />
-   <input onChange={(e)=>{changImg(e)}} placeholder='img'/>
-   <input onChange={(e)=>{changVid(e)}} placeholder='video' />
-   <button onClick={()=>{addDiet()}}>add</button>
+   {user.admin==true?
+   <div>
+     <input onChange={(e)=>{changInN(e)}} placeholder='name'/>,
+      <input onChange={(e)=>{changInDes(e)}} placeholder='description' />,
+      <input onChange={(e)=>{changImg(e)}} placeholder='img'/>,
+      <input onChange={(e)=>{changVid(e)}} placeholder='video' />,
+      <button onClick={()=>{addDiet()}}>add</button>,
+      </div>
+   :""}
 
    {Diet.map((element, index)=>{
      return(
-      <div className='h1' >
-      <h1 className='h1' style={{color:"white"}}> {element.name}</h1>
+      <div >
+        
       {/* <h2 className='h1' style={{color:"white"}}>{element.description}</h2> */}
-      
-      <img className='center' onClick={()=>{goFodDiet(element._id)}} style={{width: "380px" , height: "330px" , "border-radius": "8px",}}
-         src={element.img}/>
-      <button onClick={()=>{delDiet(element._id, index)}}>remove</button>
+            <h1 className='h1' style={{color:"white"}}> {element.name}</h1>
+
+      <img className='img' onClick={()=>{goFodDiet(element._id)}}src={element.img}/>
+     
+         {user.admin==true?( 
+         <button onClick={()=>{delDiet(element._id, index)}}>remove</button>
+            ):""}
             
       </div>
 
